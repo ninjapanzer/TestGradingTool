@@ -31,8 +31,8 @@ public class GradingFun {
 	Map<String, Double> data = gp.getParsedData();
 	
 	for (Map.Entry<String, Double> entry : data.entrySet()) {
-	  Double fudgedScore = (entry.getValue() - pointPadding)/pointPadding;
-	  Double unfudgedScore = (entry.getValue())/totalPoints;
+	  Double unfudgedScore = (entry.getValue() - pointPadding)/pointPadding;
+	  Double fudgedScore = (entry.getValue())/totalPoints;
 	  String fudgeLetterGrade = (new LetterGrader(fudgedScore*100)).getLetterGrade();
 	  String unfudgeLetterGrade = (new LetterGrader(unfudgedScore*100)).getLetterGrade();
 	  if(!fudgeDistribution.containsKey(fudgeLetterGrade)){
@@ -40,10 +40,10 @@ public class GradingFun {
 	  }else{
 		fudgeDistribution.put(fudgeLetterGrade, fudgeDistribution.get(fudgeLetterGrade)+1);
 	  }
-	  if(!unfudgeDistribution.containsKey(fudgeLetterGrade)){
-		unfudgeDistribution.put(fudgeLetterGrade, 1);
+	  if(!unfudgeDistribution.containsKey(unfudgeLetterGrade)){
+		unfudgeDistribution.put(unfudgeLetterGrade, 1);
 	  }else{
-		unfudgeDistribution.put(unfudgeLetterGrade, unfudgeDistribution.get(fudgeLetterGrade)+1);
+		unfudgeDistribution.put(unfudgeLetterGrade, unfudgeDistribution.get(unfudgeLetterGrade)+1);
 	  }
 	  System.out.println("Student : " + entry.getKey()
 		  + "\n\t Scored: \t "+ formatter.format(fudgedScore) + "\t" + fudgeLetterGrade
